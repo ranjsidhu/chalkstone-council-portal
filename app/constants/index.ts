@@ -8,4 +8,6 @@ const ISSUE_OPTIONS = [
   { id: 7, name: "Other" },
 ];
 
-export { ISSUE_OPTIONS };
+const MAP_CENTER = [50.73, -3.53];
+
+export { ISSUE_OPTIONS, MAP_CENTER };
