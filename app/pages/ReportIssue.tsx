@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { MAP_CENTER } from "./constants";
+import { MAP_CENTER } from "../constants";
 import { getAddress, handleSubmit } from "@/app/utils";
 import {
   Description,
