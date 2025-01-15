@@ -19,10 +19,15 @@ export async function GET() {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    console.log("🚀 ~ POST ~ body:", body);
+    const insertData = {
+      lat: body.position[0],
+      long: body.position[1],
+      issue_type_id: body.issue.id,
+      description: body.description,
+      address: body.address,
+    };
     const supabase = await createClient();
-    const { data, error } = await supabase.from("issues").insert([body]);
-    console.log("🚀 ~ POST ~ data:", data);
+    const { data, error } = await supabase.from("issues").insert([insertData]);
     if (error) throw new Error(error.message);
     return NextResponse.json(
       { response: data, message: "Issue created successfully" },
