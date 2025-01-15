@@ -1,23 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
+import dynamic from "next/dynamic";
 import { Camera, MapPin, Send } from "lucide-react";
-import L from "leaflet";
 import { ISSUE_OPTIONS } from "./constants";
 import getAddress from "./utils/getAddress";
 import handleSubmit from "./utils/handleSubmit";
 
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
-  iconUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
-  shadowUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
-});
+// Dynamically import the Map component with no SSR
+const Map = dynamic(() => import("./components/Map"), { ssr: false });
 
 type IssueType = {
   id: number | null;
@@ -25,7 +16,7 @@ type IssueType = {
 };
 
 export default function ReportIssue() {
-  const [position, setPosition] = useState([0, 0]);
+  const [position, setPosition] = useState<[number, number]>([50.73, -3.53]);
   const [issueType, setIssueType] = useState<IssueType>({ id: null, name: "" });
   const [description, setDescription] = useState("");
   const [image, setImage] = useState<File | null>(null);
@@ -33,31 +24,21 @@ export default function ReportIssue() {
   const [loading, setLoading] = useState(false);
 
   const resetForm = () => {
-    setPosition([0, 0]);
+    setPosition([50.73, -3.53]);
     setIssueType({ id: null, name: "" });
     setDescription("");
     setImage(null);
     setAddress("");
   };
 
-  const LocationPicker = ({
-    position,
-    setPosition,
-    setAddress,
-  }: {
-    position: any;
-    setPosition: any;
-    setAddress: any;
-  }) => {
-    useMapEvents({
-      click(e) {
-        const { lat, lng } = e.latlng;
-        setPosition([lat, lng]);
-        setLoading(true);
-        getAddress(lat, lng, setAddress).finally(() => setLoading(false));
-      },
-    });
-    return position ? <Marker position={position} /> : null;
+  const handleLocationSelect = async (lat: number, lng: number) => {
+    setPosition([lat, lng]);
+    setLoading(true);
+    try {
+      await getAddress(lat, lng, setAddress);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -88,21 +69,10 @@ export default function ReportIssue() {
           <div className="bg-white rounded-lg shadow p-4">
             <label className="block mb-2 font-medium">Select Location</label>
             <div className="h-[300px] rounded-lg overflow-hidden">
-              <MapContainer
-                center={[50.73, -3.53]}
-                zoom={13}
-                className="h-full w-full"
-              >
-                <TileLayer
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                />
-                <LocationPicker
-                  position={position}
-                  setPosition={setPosition}
-                  setAddress={setAddress}
-                />
-              </MapContainer>
+              <Map
+                position={position}
+                onLocationSelect={handleLocationSelect}
+              />
             </div>
             <p className="mt-2 text-sm text-gray-500 flex items-center gap-1">
               <MapPin className="w-4 h-4" />
@@ -121,6 +91,7 @@ export default function ReportIssue() {
               </div>
             )}
           </div>
+
           <div className="bg-white rounded-lg shadow p-4">
             <label className="block mb-2 font-medium">Issue Type</label>
             <select
@@ -145,6 +116,7 @@ export default function ReportIssue() {
               ))}
             </select>
           </div>
+
           <div className="bg-white rounded-lg shadow p-4">
             <label className="block mb-2 font-medium">Description</label>
             <textarea
@@ -155,6 +127,7 @@ export default function ReportIssue() {
               required
             />
           </div>
+
           <div className="bg-white rounded-lg shadow p-4">
             <label className="block mb-2 font-medium">Add Photo</label>
             <div className="flex items-center gap-2">
@@ -175,6 +148,7 @@ export default function ReportIssue() {
               )}
             </div>
           </div>
+
           <button
             type="submit"
             className="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 flex items-center justify-center gap-2"
