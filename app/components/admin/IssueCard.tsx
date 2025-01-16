@@ -14,7 +14,7 @@ export default function IssueCard({ issue }: IssueCardProps) {
   const status = mapStatusToType(issue.issue_statuses.name);
 
   return (
-    <div className="bg-white rounded-lg shadow p-4 hover:shadow-md transition-shadow">
+    <div className="bg-white rounded-lg shadow p-4 hover:shadow-md transition-shadow mt-6 mb-6">
       <div className="flex justify-between items-start mb-3">
         <div className="flex items-center gap-2">
           <AlertCircle className="w-5 h-5 text-gray-500" />
