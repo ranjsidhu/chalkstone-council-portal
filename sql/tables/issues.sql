@@ -44,3 +44,8 @@ SELECT
 CREATE POLICY "Enable insert access for all users" ON public.issues AS PERMISSIVE FOR INSERT TO public
 WITH
     CHECK (true);
+
+-- POLICY: Enable update access for all users
+-- DROP POLICY IF EXISTS "Enable update access for all users" ON public.issues;
+CREATE POLICY "Enable update access for all users" ON public.issues AS PERMISSIVE FOR
+UPDATE TO public USING (true);

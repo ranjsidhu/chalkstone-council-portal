@@ -1,15 +1,11 @@
 import toast from "react-hot-toast";
-
-type IssueType = {
-  id: number | null;
-  name: string;
-};
+import { type IssueSelectOptionType } from "../types";
 
 const handleSubmit = async (
   e: React.FormEvent,
   values: {
     position: number[];
-    issue: IssueType;
+    issue: IssueSelectOptionType;
     description: string;
     image: File | null;
     address: string;

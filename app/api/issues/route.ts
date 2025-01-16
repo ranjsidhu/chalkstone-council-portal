@@ -4,8 +4,9 @@ import { createClient } from "@/app/utils";
 export async function GET() {
   try {
     const supabase = await createClient();
-    const { data, error } = await supabase.from("issues").select();
-    console.log("🚀 ~ GET ~ data:", data);
+    const { data, error } = await supabase
+      .from("issues")
+      .select("*, issue_statuses(name), issue_types(name)");
     if (error) throw new Error(error.message);
     return NextResponse.json(
       { response: data, message: "Issues fetched successfully" },
@@ -55,7 +56,7 @@ export async function PUT(req: NextRequest) {
         message: "Issue updated successfully",
         response: { ...data },
       },
-      { status: 204 }
+      { status: 200 }
     );
   } catch (error: any) {
     return NextResponse.json({ message: error.message }, { status: 500 });

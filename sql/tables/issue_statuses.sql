@@ -35,4 +35,6 @@ SELECT
     TO public USING (true);
 
 
+
+
 INSERT INTO public.issue_statuses (name) VALUES ('Open'), ('In Progress'), ('Resolved'), ('Closed');

@@ -1,9 +1,5 @@
 import { ISSUE_OPTIONS } from "@/app/constants";
-
-type IssueSelectOptionType = {
-  id: number | null;
-  name: string;
-};
+import { type IssueSelectOptionType } from "@/app/types";
 
 type IssueSelectProps = {
   issueType: IssueSelectOptionType;

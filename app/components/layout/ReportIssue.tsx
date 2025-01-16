@@ -10,15 +10,14 @@ import {
   MapSelect,
   SubmitButton,
 } from "@/app/components";
-
-type IssueType = {
-  id: number | null;
-  name: string;
-};
+import { type IssueSelectOptionType } from "@/app/types";
 
 export default function ReportIssue() {
   const [position, setPosition] = useState(MAP_CENTER);
-  const [issueType, setIssueType] = useState<IssueType>({ id: null, name: "" });
+  const [issueType, setIssueType] = useState<IssueSelectOptionType>({
+    id: null,
+    name: "",
+  });
   const [description, setDescription] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [address, setAddress] = useState("");
