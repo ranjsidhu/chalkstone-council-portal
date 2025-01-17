@@ -26,6 +26,7 @@ export async function POST(req: NextRequest) {
       issue_type_id: body.issue.id,
       description: body.description,
       address: body.address,
+      image_filename: body.image_filename,
     };
     const supabase = await createClient();
     const { data, error } = await supabase.from("issues").insert([insertData]);
