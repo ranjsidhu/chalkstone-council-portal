@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import { fetchIssues } from "./serveractions";
 import Loading from "@/app/loading";
-import IssueList from "./IssueList";
+import IssueListContent from "./IssueListContent";
 
 export default async function AdminListIssuesPage() {
   return (
@@ -18,10 +17,4 @@ export default async function AdminListIssuesPage() {
       </Suspense>
     </div>
   );
-}
-
-// This component handles the async data fetching
-async function IssueListContent() {
-  const issues = await fetchIssues();
-  return <IssueList issues={issues} />;
 }
