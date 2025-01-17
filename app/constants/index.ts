@@ -10,4 +10,6 @@ const ISSUE_OPTIONS = [
 
 const MAP_CENTER = [50.73, -3.53];
 
-export { ISSUE_OPTIONS, MAP_CENTER };
+const AUTH_STORAGE_KEY = "CCouncilIsAuthenticated";
+
+export { ISSUE_OPTIONS, MAP_CENTER, AUTH_STORAGE_KEY };
