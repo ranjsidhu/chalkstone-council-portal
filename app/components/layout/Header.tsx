@@ -17,10 +17,13 @@ export default function Header() {
     // Check if user is authenticated on component mount
     const authStatus = localStorage.getItem(AUTH_STORAGE_KEY);
     setIsLoggedIn(authStatus === "true");
-    if (pathname.startsWith("/admin") && !isLoggedIn) {
+    if (
+      (pathname.startsWith("/admin") && !authStatus) ||
+      authStatus !== "true"
+    ) {
       router.push("/");
     }
-  }, []);
+  }, [pathname]);
 
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
