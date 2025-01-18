@@ -27,6 +27,6 @@ export async function GET(
       },
     });
   } catch (error: any) {
-    return { error: error.message };
+    return NextResponse.json({ error: error.message });
   }
 }
