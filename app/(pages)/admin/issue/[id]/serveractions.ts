@@ -8,7 +8,7 @@ export async function fetchIssueDetails(id: string) {
   try {
     const response = await fetch(`${BASE_URL}/api/issues/${id}`);
     const data = await response.json();
-    return data.response[0];
+    return { ...data.response[0], image: data.response.image };
   } catch (error: any) {
     console.error(error.message);
   }

@@ -21,6 +21,7 @@ interface IssueDetailProps {
 // };
 
 export default function IssueDetail({ issue, statuses }: IssueDetailProps) {
+  console.log("🚀 ~ IssueDetail ~ issue:", issue);
   const router = useRouter();
   const [issueStatus, setIssueStatus] = useState(issue.issue_statuses.name);
 
@@ -64,15 +65,17 @@ export default function IssueDetail({ issue, statuses }: IssueDetailProps) {
             </div>
           )}
         </div>
-        {/* {issue.image_filename && (
+        {issue.image_filename && issue.image && (
           <div className="rounded-lg overflow-hidden">
             <Image
-              src={`/images/${issue.image_filename}`}
+              src={issue.image}
               alt="Issue"
               className="w-full h-auto"
+              width={800}
+              height={600}
             />
           </div>
-        )} */}
+        )}
         <div className="space-y-2">
           <h3 className="font-medium text-gray-900">Description</h3>
           <p className="text-gray-600">{issue.description}</p>

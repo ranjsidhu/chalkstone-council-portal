@@ -18,6 +18,7 @@ export type IssueResponseType = {
   description: string;
   address: string;
   image_filename: string | null;
+  image?: string;
   status_id: number;
   created_at: string;
   updated_at: string;
