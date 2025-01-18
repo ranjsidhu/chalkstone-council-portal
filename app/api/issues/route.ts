@@ -6,7 +6,9 @@ export async function GET() {
     const supabase = await createClient();
     const { data, error } = await supabase
       .from("issues")
-      .select("*, issue_statuses(name), issue_types(name)");
+      .select(
+        "id, description, address, created_at, issue_statuses(name), issue_types(name)"
+      );
     if (error) throw new Error(error.message);
     return NextResponse.json(
       { response: data, message: "Issues fetched successfully" },

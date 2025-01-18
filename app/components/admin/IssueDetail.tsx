@@ -64,7 +64,7 @@ export default function IssueDetail({ issue, statuses }: IssueDetailProps) {
             </div>
           )}
         </div>
-        {issue.image_filename && (
+        {/* {issue.image_filename && (
           <div className="rounded-lg overflow-hidden">
             <Image
               src={`/images/${issue.image_filename}`}
@@ -72,7 +72,7 @@ export default function IssueDetail({ issue, statuses }: IssueDetailProps) {
               className="w-full h-auto"
             />
           </div>
-        )}
+        )} */}
         <div className="space-y-2">
           <h3 className="font-medium text-gray-900">Description</h3>
           <p className="text-gray-600">{issue.description}</p>
