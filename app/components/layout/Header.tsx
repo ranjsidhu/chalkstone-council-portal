@@ -23,7 +23,7 @@ export default function Header() {
     ) {
       router.push("/");
     }
-  }, [pathname]);
+  }, [pathname, router]);
 
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);

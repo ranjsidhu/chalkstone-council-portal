@@ -1,4 +1,5 @@
 import { Camera, X } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 type ImageUploadProps = {
@@ -33,10 +34,12 @@ export default function ImageUpload({ image, setImage }: ImageUploadProps) {
       <div className="space-y-4">
         {previewUrl ? (
           <div className="relative w-full max-w-md">
-            <img
+            <Image
+              width={800}
+              height={600}
               src={previewUrl}
               alt="Preview"
-              className="rounded-lg w-full h-auto max-h-64 object-cover"
+              className="w-full h-auto"
             />
             <button
               onClick={handleRemoveImage}
