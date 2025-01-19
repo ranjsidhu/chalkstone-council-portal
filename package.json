@@ -17,6 +17,7 @@
     "react-dom": "^19.0.0",
     "react-hot-toast": "^2.5.1",
     "react-leaflet": "^5.0.0",
+    "recharts": "^2.15.0",
     "uuid": "^11.0.5"
   },
   "devDependencies": {
