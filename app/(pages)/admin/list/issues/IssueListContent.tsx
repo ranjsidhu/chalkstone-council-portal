@@ -132,5 +132,3 @@ export default function IssueListContent({ statuses }: IssueListContentProps) {
     </>
   );
 }
-
-// TODO - investigate pagination with no filters applied; change the onPageChange function
