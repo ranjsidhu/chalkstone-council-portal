@@ -29,3 +29,13 @@ export type IssueResponseType = {
     name: string;
   };
 };
+
+export type AnalyticsStats = {
+  totalIssues: number;
+  resolvedIssues: number;
+  averageResolutionTime: string;
+  activeUsers: number;
+  issuesByType: Array<{ name: string; value: number }>;
+  issuesByStatus: Array<{ name: string; value: number }>;
+  issuesTrend: Array<{ date: string; count: number }>;
+};
