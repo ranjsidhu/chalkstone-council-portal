@@ -6,7 +6,7 @@ export async function fetchIssues(page: number) {
   try {
     const response = await fetch(`${BASE_URL}/api/issues/limit/${page}`);
     const data = await response.json();
-    return data.response;
+    return { issues: data.response, count: data.totalCount };
   } catch (error: any) {
     console.error(error.message);
   }

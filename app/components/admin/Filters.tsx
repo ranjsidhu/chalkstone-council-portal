@@ -1,0 +1,84 @@
+import { Filter } from "lucide-react";
+import { IssueStatusType } from "@/app/types";
+import { ISSUE_OPTIONS } from "@/app/constants";
+
+type FilterProps = {
+  statuses: IssueStatusType[];
+  selectedStatus: string;
+  selectedType: string;
+  onFilterChange: (status: string, type: string) => void;
+  isLoading?: boolean;
+};
+
+export default function Filters({
+  statuses,
+  selectedStatus,
+  selectedType,
+  isLoading,
+  onFilterChange,
+}: FilterProps) {
+  const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    onFilterChange(e.target.value, selectedType);
+  };
+
+  const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    onFilterChange(selectedStatus, e.target.value);
+  };
+
+  return (
+    <div className="bg-white rounded-lg shadow p-6 mb-6">
+      <div className="flex items-center gap-2 mb-4">
+        <Filter className="w-5 h-5 text-gray-500" />
+        <h3 className="font-medium text-gray-900">Filters</h3>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="space-y-2">
+          <label
+            htmlFor="status-filter"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Status
+          </label>
+          <select
+            id="status-filter"
+            value={selectedStatus}
+            onChange={handleStatusChange}
+            disabled={isLoading}
+            className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm disabled:bg-gray-100 disabled:cursor-not-allowed"
+          >
+            <option value="">All Statuses</option>
+            {statuses.map((status) => (
+              <option key={status.id} value={status.name}>
+                {status.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="space-y-2">
+          <label
+            htmlFor="type-filter"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Issue Type
+          </label>
+          <select
+            id="type-filter"
+            value={selectedType}
+            onChange={handleTypeChange}
+            disabled={isLoading}
+            className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm disabled:bg-gray-100 disabled:cursor-not-allowed"
+          >
+            <option value="">All Types</option>
+            {ISSUE_OPTIONS.map((type) => (
+              <option key={type.id} value={type.name}>
+                {type.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+    </div>
+  );
+}

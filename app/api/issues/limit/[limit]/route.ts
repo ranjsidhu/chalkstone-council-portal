@@ -24,11 +24,20 @@ export async function GET(
       throw new Error(error.message);
     }
 
+    const { count, error: countError } = await supabase
+      .from("issues")
+      .select("*", { count: "exact", head: true });
+
+    if (countError) {
+      throw countError;
+    }
+
     return NextResponse.json({
-      message: `Successfully fetched ${limit} jobs`,
+      message: `Successfully fetched ${limit} issues`,
       response: data,
+      totalCount: count || 0,
     });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message });
+    return NextResponse.json({ error: error.message, totalCount: 0 });
   }
 }

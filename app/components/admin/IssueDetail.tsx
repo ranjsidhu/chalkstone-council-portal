@@ -21,7 +21,6 @@ interface IssueDetailProps {
 // };
 
 export default function IssueDetail({ issue, statuses }: IssueDetailProps) {
-  console.log("🚀 ~ IssueDetail ~ issue:", issue);
   const router = useRouter();
   const [issueStatus, setIssueStatus] = useState(issue.issue_statuses.name);
 
