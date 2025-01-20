@@ -3,10 +3,12 @@ import Header from "./components/layout/Header";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
+// eslint-disable-next-line import/no-unused-modules
 export const metadata: Metadata = {
   title: "Chalkstone Council Portal",
 };
 
+// eslint-disable-next-line import/no-unused-modules
 export default function RootLayout({
   children,
 }: Readonly<{

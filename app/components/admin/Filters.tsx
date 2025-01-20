@@ -8,6 +8,7 @@ type FilterProps = {
   selectedStatus: string;
   selectedType: string;
   selectedStaff: string;
+  // eslint-disable-next-line no-unused-vars
   onFilterChange: (status: string, type: string, staff: string) => void;
   isLoading?: boolean;
 };

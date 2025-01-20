@@ -28,6 +28,7 @@ export default function IssueButton({
     "In Progress": "bg-blue-600 hover:bg-blue-700",
     Resolved: "bg-green-600 hover:bg-green-700",
     Closed: "bg-red-600 hover:bg-red-700",
+    Unassigned: "bg-gray-100 text-gray-800",
   };
 
   return (

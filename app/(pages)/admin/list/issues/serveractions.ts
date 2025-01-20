@@ -12,6 +12,7 @@ export async function fetchIssues(page: number) {
   }
 }
 
+// eslint-disable-next-line import/no-unused-modules
 export async function fetchIssueCount() {
   try {
     const response = await fetch(`${BASE_URL}/api/issues/count`);

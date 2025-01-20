@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/app/utils";
 
-const { NEXT_PUBLIC_SITE_URL } = process.env;
-
 export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }

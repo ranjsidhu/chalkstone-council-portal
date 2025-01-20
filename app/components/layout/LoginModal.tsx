@@ -53,8 +53,8 @@ export default function LoginModal({
       } else {
         setError("Invalid username or password");
       }
-    } catch (err) {
-      setError("An error occurred. Please try again.");
+    } catch (err: any) {
+      setError("An error occurred. Please try again. " + err.message);
     } finally {
       setIsLoading(false);
     }

@@ -1,0 +1,18 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "no-unused-vars": [
+      "error",
+      { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }
+    ],
+    "import/no-unused-modules": [
+      "error",
+      {
+        "unusedExports": true,
+        "missingExports": false,
+        "ignoreExports": ["./app/api/**/*", "**/page.tsx"]
+      }
+    ]
+  },
+  "plugins": ["import"]
+}

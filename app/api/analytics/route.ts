@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { createClient } from "@/app/utils";
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     const supabase = await createClient();
 
@@ -127,10 +127,12 @@ function getDayNames() {
   ];
 }
 
+// eslint-disable-next-line no-unused-vars
 function getDayNumber(dayName: string) {
   return getDayNames().indexOf(dayName);
 }
 
+// eslint-disable-next-line no-unused-vars
 function isThisWeek(date: Date) {
   const now = new Date();
   const weekStart = new Date(now.setDate(now.getDate() - now.getDay()));
@@ -138,6 +140,7 @@ function isThisWeek(date: Date) {
   return date >= weekStart && date <= weekEnd;
 }
 
+// eslint-disable-next-line no-unused-vars
 function isLastWeek(date: Date) {
   const now = new Date();
   const lastWeekStart = new Date(now.setDate(now.getDate() - now.getDay() - 7));

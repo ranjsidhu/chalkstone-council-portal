@@ -3,6 +3,7 @@ import { type IssueSelectOptionType } from "@/app/types";
 
 type IssueSelectProps = {
   issueType: IssueSelectOptionType;
+  // eslint-disable-next-line no-unused-vars
   setIssueType: (issueType: IssueSelectOptionType) => void;
 };
 

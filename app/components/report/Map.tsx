@@ -18,6 +18,7 @@ const defaultIcon = icon({
 
 type MapProps = {
   position: [number, number];
+  // eslint-disable-next-line no-unused-vars
   onLocationSelect: (lat: number, lng: number) => void;
 };
 

@@ -1,4 +1,3 @@
-import { SetStateAction } from "react";
 import { IssueResponseType } from "@/app/types";
 import IssueCard from "@/app/components/admin/IssueCard";
 import Pagination from "@/app/components/layout/Pagination";
