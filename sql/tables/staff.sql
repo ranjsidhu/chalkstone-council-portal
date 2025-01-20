@@ -6,7 +6,6 @@ CREATE TABLE
             INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1
         ),
         name text COLLATE pg_catalog."default",
-        issue_id INTEGER,
         created_at timestamp
         with
             time zone DEFAULT now (),

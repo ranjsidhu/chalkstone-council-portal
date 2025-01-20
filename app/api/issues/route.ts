@@ -31,7 +31,10 @@ export async function POST(req: NextRequest) {
       image_filename: body.image_filename,
     };
     const supabase = await createClient();
-    const { data, error } = await supabase.from("issues").insert([insertData]);
+    const { data, error } = await supabase
+      .from("issues")
+      .insert([insertData])
+      .select();
     if (error) throw new Error(error.message);
     return NextResponse.json(
       { response: data, message: "Issue created successfully" },
@@ -45,15 +48,26 @@ export async function POST(req: NextRequest) {
 export async function PUT(req: NextRequest) {
   try {
     const body = await req.json();
-    const { id } = body;
+    const { id, status_name } = body;
     delete body.id;
+    delete body.status_name;
+    if (status_name === "Closed") {
+      delete body.resolved_at;
+    }
     const supabase = await createClient();
-    const { data, error } = await supabase
+    const { data, error: updateError } = await supabase
       .from("issues")
       .update({ ...body, updated_at: new Date().toISOString() })
       .eq("id", id)
       .select();
-    if (error) throw new Error(error.message);
+    if (updateError) throw new Error(updateError.message);
+
+    const { error: resolvedError } = await supabase
+      .from("staff_issues")
+      .update({ is_resolved: status_name === "Resolved" })
+      .eq("issue_id", id);
+    if (resolvedError) throw new Error(resolvedError.message);
+
     return NextResponse.json(
       {
         message: "Issue updated successfully",

@@ -1,0 +1,1 @@
+ALTER TABLE issues ALTER COLUMN status_id SET DEFAULT 5;

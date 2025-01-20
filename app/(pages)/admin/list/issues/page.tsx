@@ -3,9 +3,11 @@ import { Suspense } from "react";
 import Loading from "@/app/loading";
 import IssueListContent from "./IssueListContent";
 import { fetchIssueStatuses } from "../../issue/[id]/serveractions";
+import { fetchStaff } from "./serveractions";
 
 export default async function AdminListIssuesPage() {
   const statuses = await fetchIssueStatuses();
+  const staff = await fetchStaff();
 
   if (!statuses.length) {
     return <div>Failed to fetch statuses</div>;
@@ -20,7 +22,7 @@ export default async function AdminListIssuesPage() {
         >
           Back
         </Link>
-        <IssueListContent statuses={statuses} />
+        <IssueListContent statuses={statuses} staff={staff} />
       </Suspense>
     </div>
   );

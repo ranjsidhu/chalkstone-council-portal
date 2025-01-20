@@ -21,3 +21,13 @@ export async function fetchIssueCount() {
     console.error(error.message);
   }
 }
+
+export async function fetchStaff() {
+  try {
+    const response = await fetch(`${BASE_URL}/api/staff`);
+    const data = await response.json();
+    return data.response;
+  } catch (error: any) {
+    console.error(error.message);
+  }
+}

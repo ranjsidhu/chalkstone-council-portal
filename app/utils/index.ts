@@ -19,8 +19,9 @@ const mapStatusToType = (status: string): IssueStatus => {
     "In Progress": "In Progress",
     Resolved: "Resolved",
     Closed: "Closed",
+    Unassigned: "Unassigned",
   };
-  return statusMap[status] || "open";
+  return statusMap[status];
 };
 
 const statusColours: Record<IssueStatus, string> = {
@@ -28,6 +29,7 @@ const statusColours: Record<IssueStatus, string> = {
   "In Progress": "bg-blue-100 text-blue-800",
   Resolved: "bg-green-100 text-green-800",
   Closed: "bg-red-100 text-red-800",
+  Unassigned: "bg-gray-100 text-gray-800",
 };
 
 export {

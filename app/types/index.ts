@@ -3,7 +3,12 @@ export type IssueSelectOptionType = {
   name: string;
 };
 
-export type IssueStatus = "Open" | "In Progress" | "Resolved" | "Closed";
+export type IssueStatus =
+  | "Open"
+  | "In Progress"
+  | "Resolved"
+  | "Closed"
+  | "Unassigned";
 
 export type IssueStatusType = {
   id: number;
@@ -38,4 +43,11 @@ export type AnalyticsStats = {
   issuesByType: Array<{ name: string; value: number }>;
   issuesByStatus: Array<{ name: string; value: number }>;
   issuesTrend: Array<{ date: string; count: number }>;
+};
+
+export type Staff = {
+  id: number;
+  name: number;
+  created_at: string;
+  updated_at: string;
 };

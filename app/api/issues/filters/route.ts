@@ -7,6 +7,7 @@ export async function GET(req: NextRequest) {
     const searchParams = req.nextUrl.searchParams;
     const status = searchParams.get("status");
     const type = searchParams.get("type");
+    const staff = searchParams.get("staff");
     const page = parseInt(searchParams.get("page") || "1");
     const itemsPerPage = 5;
 
@@ -15,6 +16,7 @@ export async function GET(req: NextRequest) {
     // First, if we have filters, get the IDs
     let statusId: number | null = null;
     let typeId: number | null = null;
+    let staffId: number | null = null;
 
     if (status) {
       const { data: statusData } = await supabase
@@ -40,6 +42,17 @@ export async function GET(req: NextRequest) {
       }
     }
 
+    if (staff) {
+      const { data: staffData } = await supabase
+        .from("staff")
+        .select("id")
+        .eq("name", staff)
+        .single();
+      if (staffData) {
+        staffId = staffData.id;
+      }
+    }
+
     // Now build the main query
     let query = supabase.from("issues").select(`
         *,
@@ -50,6 +63,9 @@ export async function GET(req: NextRequest) {
         issue_types (
           id,
           name
+        ),
+        staff_issues!inner (
+          staff_id
         )
       `);
 
@@ -60,6 +76,10 @@ export async function GET(req: NextRequest) {
 
     if (typeId) {
       query = query.eq("issue_type_id", typeId);
+    }
+
+    if (staffId) {
+      query = query.eq("staff_issues.staff_id", staffId);
     }
 
     // Build base query for count
@@ -98,7 +118,10 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    return NextResponse.json({ response: data || [], totalCount: count || 0 });
+    return NextResponse.json({
+      response: data || [],
+      totalCount: staffId ? data.length : count || 0,
+    });
   } catch (error: any) {
     console.error("API Error:", error);
     return NextResponse.json(

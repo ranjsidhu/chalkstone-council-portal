@@ -11,7 +11,13 @@ export async function updateIssueStatus(status: IssueStatusType, id: number) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ id, status_id: status.id }),
+      body: JSON.stringify({
+        id,
+        status_id: status.id,
+        status_name: status.name,
+        resolved_at:
+          status.name === "Resolved" ? new Date().toISOString() : null,
+      }),
     });
     if (!response.ok) {
       throw new Error(response.statusText);

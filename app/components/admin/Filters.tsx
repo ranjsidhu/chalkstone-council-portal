@@ -1,12 +1,14 @@
 import { Filter } from "lucide-react";
-import { IssueStatusType } from "@/app/types";
+import { IssueStatusType, Staff } from "@/app/types";
 import { ISSUE_OPTIONS } from "@/app/constants";
 
 type FilterProps = {
   statuses: IssueStatusType[];
+  staff: Staff[];
   selectedStatus: string;
   selectedType: string;
-  onFilterChange: (status: string, type: string) => void;
+  selectedStaff: string;
+  onFilterChange: (status: string, type: string, staff: string) => void;
   isLoading?: boolean;
 };
 
@@ -14,15 +16,21 @@ export default function Filters({
   statuses,
   selectedStatus,
   selectedType,
+  selectedStaff,
   isLoading,
+  staff,
   onFilterChange,
 }: FilterProps) {
   const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    onFilterChange(e.target.value, selectedType);
+    onFilterChange(e.target.value, selectedType, selectedStaff);
   };
 
   const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    onFilterChange(selectedStatus, e.target.value);
+    onFilterChange(selectedStatus, e.target.value, selectedStaff);
+  };
+
+  const handleStaffChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    onFilterChange(selectedStatus, selectedType, e.target.value);
   };
 
   return (
@@ -72,6 +80,29 @@ export default function Filters({
           >
             <option value="">All Types</option>
             {ISSUE_OPTIONS.map((type) => (
+              <option key={type.id} value={type.name}>
+                {type.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="space-y-2">
+          <label
+            htmlFor="staff-filter"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Staff Member
+          </label>
+          <select
+            id="type-filter"
+            value={selectedStaff}
+            onChange={handleStaffChange}
+            disabled={isLoading}
+            className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm disabled:bg-gray-100 disabled:cursor-not-allowed"
+          >
+            <option value="">All Staff</option>
+            {staff.map((type) => (
               <option key={type.id} value={type.name}>
                 {type.name}
               </option>
