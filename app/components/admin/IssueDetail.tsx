@@ -7,8 +7,20 @@ import { Clock, MapPin, AlertCircle, CheckCircle } from "lucide-react";
 import { formatDate, statusColours } from "@/app/utils";
 import { IssueResponseType, IssueStatusType } from "@/app/types";
 import IssueButton from "./IssueButton";
+import { ISSUE_DETAIL_CONFIG } from "@/test_configs";
 
-interface IssueDetailProps {
+const {
+  container,
+  address,
+  created,
+  updated,
+  image,
+  description,
+  buttons,
+  goBack,
+} = ISSUE_DETAIL_CONFIG;
+
+export interface IssueDetailProps {
   issue: IssueResponseType;
   statuses: IssueStatusType[];
 }
@@ -25,7 +37,10 @@ export default function IssueDetail({ issue, statuses }: IssueDetailProps) {
   const [issueStatus, setIssueStatus] = useState(issue.issue_statuses.name);
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6 dmax-w-2xl w-full">
+    <div
+      data-testid={container}
+      className="bg-white rounded-lg shadow-lg p-6 dmax-w-2xl w-full"
+    >
       <div className="flex justify-between items-start mb-6">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
@@ -41,6 +56,7 @@ export default function IssueDetail({ issue, statuses }: IssueDetailProps) {
           </span>
         </div>
         <button
+          data-testid={goBack}
           onClick={() => router.back()}
           className="text-gray-400 hover:text-gray-500"
         >
@@ -51,22 +67,27 @@ export default function IssueDetail({ issue, statuses }: IssueDetailProps) {
         <div className="space-y-3">
           <div className="flex items-start gap-2 text-gray-600">
             <MapPin className="w-5 h-5 mt-0.5 flex-shrink-0" />
-            <span>{issue.address}</span>
+            <span data-testid={address}>{issue.address}</span>
           </div>
           <div className="flex items-start gap-2 text-gray-600">
             <Clock className="w-5 h-5 mt-0.5 flex-shrink-0" />
-            <span>Reported on {formatDate(issue.created_at)}</span>
+            <span data-testid={created}>
+              Reported on {formatDate(issue.created_at)}
+            </span>
           </div>
           {issue.updated_at !== issue.created_at && (
             <div className="flex items-start gap-2 text-gray-600">
               <Clock className="w-5 h-5 mt-0.5 flex-shrink-0" />
-              <span>Last updated {formatDate(issue.updated_at)}</span>
+              <span data-testid={updated}>
+                Last updated {formatDate(issue.updated_at)}
+              </span>
             </div>
           )}
         </div>
         {issue.image_filename && issue.image && (
           <div className="rounded-lg overflow-hidden">
             <Image
+              data-testid={image}
               src={issue.image}
               alt="Issue"
               className="w-full h-auto"
@@ -77,9 +98,11 @@ export default function IssueDetail({ issue, statuses }: IssueDetailProps) {
         )}
         <div className="space-y-2">
           <h3 className="font-medium text-gray-900">Description</h3>
-          <p className="text-gray-600">{issue.description}</p>
+          <p data-testid={description} className="text-gray-600">
+            {issue.description}
+          </p>
         </div>
-        <div className="flex gap-3 pt-4 border-t">
+        <div className="flex gap-3 pt-4 border-t" data-testid={buttons}>
           <IssueButton
             buttonText="Mark In Progress"
             issueID={issue.id}

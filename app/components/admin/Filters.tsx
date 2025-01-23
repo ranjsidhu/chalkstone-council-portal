@@ -1,6 +1,7 @@
 import { Filter } from "lucide-react";
 import { IssueStatusType, Staff } from "@/app/types";
 import { ISSUE_OPTIONS } from "@/app/constants";
+import { FILTERS_CONFIG } from "@/test_configs";
 
 type FilterProps = {
   statuses: IssueStatusType[];
@@ -12,6 +13,8 @@ type FilterProps = {
   onFilterChange: (status: string, type: string, staff: string) => void;
   isLoading?: boolean;
 };
+
+const { container, statusFilter, typeFilter, staffFilter } = FILTERS_CONFIG;
 
 export default function Filters({
   statuses,
@@ -35,7 +38,10 @@ export default function Filters({
   };
 
   return (
-    <div className="bg-white rounded-lg shadow p-6 mb-6">
+    <div
+      data-testid={container}
+      className="bg-white rounded-lg shadow p-6 mb-6"
+    >
       <div className="flex items-center gap-2 mb-4">
         <Filter className="w-5 h-5 text-gray-500" />
         <h3 className="font-medium text-gray-900">Filters</h3>
@@ -50,6 +56,7 @@ export default function Filters({
             Status
           </label>
           <select
+            data-testid={statusFilter}
             id="status-filter"
             value={selectedStatus}
             onChange={handleStatusChange}
@@ -73,6 +80,7 @@ export default function Filters({
             Issue Type
           </label>
           <select
+            data-testid={typeFilter}
             id="type-filter"
             value={selectedType}
             onChange={handleTypeChange}
@@ -96,6 +104,7 @@ export default function Filters({
             Staff Member
           </label>
           <select
+            data-testid={staffFilter}
             id="type-filter"
             value={selectedStaff}
             onChange={handleStaffChange}

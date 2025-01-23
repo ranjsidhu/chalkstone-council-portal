@@ -47,7 +47,7 @@ export type AnalyticsStats = {
 
 export type Staff = {
   id: number;
-  name: number;
+  name: string;
   created_at: string;
   updated_at: string;
 };

@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { Clock, MapPin, ArrowRight, AlertCircle } from "lucide-react";
 import { formatDate, mapStatusToType, statusColours } from "@/app/utils";
 import { IssueResponseType } from "@/app/types";
+import { ISSUE_CARD_CONFIG } from "@/test_configs";
 
 interface IssueCardProps {
   issue: IssueResponseType;
@@ -13,8 +14,13 @@ export default function IssueCard({ issue }: IssueCardProps) {
   const router = useRouter();
   const status = mapStatusToType(issue.issue_statuses.name);
 
+  const { container, button } = ISSUE_CARD_CONFIG;
+
   return (
-    <div className="bg-white rounded-lg shadow p-4 hover:shadow-md transition-shadow mt-6 mb-6">
+    <div
+      data-testid={container}
+      className="bg-white rounded-lg shadow p-4 hover:shadow-md transition-shadow mt-6 mb-6"
+    >
       <div className="flex justify-between items-start mb-3">
         <div className="flex items-center gap-2">
           <AlertCircle className="w-5 h-5 text-gray-500" />
@@ -39,6 +45,7 @@ export default function IssueCard({ issue }: IssueCardProps) {
         </div>
       </div>
       <button
+        data-testid={button}
         onClick={() => router.push(`/admin/issue/${issue.id}`)}
         className="w-full flex items-center justify-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium"
       >
