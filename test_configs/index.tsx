@@ -97,6 +97,24 @@ const ANALYTICS_CARD_CONFIG = {
   data: "analytics-card-data",
 };
 
+const HEADER_CONFIG = {
+  container: "header-container",
+  logo: "header-logo",
+  adminButton: "header-admin-button",
+  signOutButton: "header-sign-out-button",
+  logInButton: "header-log-in-button",
+};
+
+const LOGIN_MODAL_CONFIG = {
+  container: "login-modal-container",
+  closeButton: "login-modal-close-button",
+  form: "login-modal-form",
+  username: "login-modal-username",
+  password: "login-modal-password",
+  submitButton: "login-modal-submit-button",
+  error: "login-modal-error",
+};
+
 export {
   ISSUE_CARD_CONFIG,
   ISSUE_BUTTON_CONFIG,
@@ -107,4 +125,6 @@ export {
   MOCK_STAFF,
   CHART_CONFIG,
   ANALYTICS_CARD_CONFIG,
+  HEADER_CONFIG,
+  LOGIN_MODAL_CONFIG,
 };

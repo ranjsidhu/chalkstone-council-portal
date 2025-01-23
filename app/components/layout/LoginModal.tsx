@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { AlertCircle, X } from "lucide-react";
 import { AUTH_STORAGE_KEY } from "@/app/constants";
+import { LOGIN_MODAL_CONFIG } from "@/test_configs";
 
 const MOCK_CREDENTIALS = {
   username: process.env.NEXT_PUBLIC_MOCK_USERNAME,
@@ -9,7 +10,7 @@ const MOCK_CREDENTIALS = {
 };
 
 type LoginModalProps = {
-  isOpen: any;
+  isOpen: boolean;
   onClose: any;
   onLoginSuccess: any;
 };
@@ -61,9 +62,13 @@ export default function LoginModal({
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999]">
+    <div
+      data-testid={LOGIN_MODAL_CONFIG.container}
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999]"
+    >
       <div className="bg-white rounded-lg p-6 w-full max-w-md relative">
         <button
+          data-testid={LOGIN_MODAL_CONFIG.closeButton}
           onClick={onClose}
           className="absolute right-4 top-4 text-gray-500 hover:text-gray-700"
         >
@@ -77,9 +82,16 @@ export default function LoginModal({
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form
+          data-testid={LOGIN_MODAL_CONFIG.form}
+          onSubmit={handleSubmit}
+          className="space-y-4"
+        >
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md flex items-center gap-2">
+            <div
+              data-testid={LOGIN_MODAL_CONFIG.error}
+              className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md flex items-center gap-2"
+            >
               <AlertCircle className="h-4 w-4" />
               <p className="text-sm">{error}</p>
             </div>
@@ -93,6 +105,7 @@ export default function LoginModal({
               Username
             </label>
             <input
+              data-testid={LOGIN_MODAL_CONFIG.username}
               id="username"
               type="text"
               value={username}
@@ -110,6 +123,7 @@ export default function LoginModal({
               Password
             </label>
             <input
+              data-testid={LOGIN_MODAL_CONFIG.password}
               id="password"
               type="password"
               value={password}
@@ -121,6 +135,7 @@ export default function LoginModal({
 
           <div className="flex justify-end">
             <button
+              data-testid={LOGIN_MODAL_CONFIG.submitButton}
               type="submit"
               disabled={isLoading}
               className={`

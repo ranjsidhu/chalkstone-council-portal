@@ -6,6 +6,7 @@ import Link from "next/link";
 import { LogIn, Settings } from "lucide-react";
 import LoginModal from "./LoginModal";
 import { AUTH_STORAGE_KEY } from "@/app/constants";
+import { HEADER_CONFIG } from "@/test_configs";
 
 export default function Header() {
   const router = useRouter();
@@ -40,10 +41,17 @@ export default function Header() {
 
   return (
     <>
-      <header className="w-full bg-white border-b border-gray-200">
+      <header
+        data-testid={HEADER_CONFIG.container}
+        className="w-full bg-white border-b border-gray-200"
+      >
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center">
-            <Link href="/" className="text-xl font-bold text-gray-900">
+            <Link
+              href="/"
+              className="text-xl font-bold text-gray-900"
+              data-testid={HEADER_CONFIG.logo}
+            >
               Chalkstone Council
             </Link>
           </div>
@@ -51,18 +59,24 @@ export default function Header() {
             {isLoggedIn ? (
               <>
                 <button
+                  data-testid={HEADER_CONFIG.adminButton}
                   className={buttonClass}
                   onClick={() => router.push("/admin")}
                 >
                   <Settings className="w-5 h-5" />
                   Admin
                 </button>
-                <button className={buttonClass} onClick={handleLogout}>
+                <button
+                  data-testid={HEADER_CONFIG.signOutButton}
+                  className={buttonClass}
+                  onClick={handleLogout}
+                >
                   Sign Out
                 </button>
               </>
             ) : (
               <button
+                data-testid={HEADER_CONFIG.logInButton}
                 onClick={() => setIsLoginModalOpen(true)}
                 className={buttonClass}
               >
