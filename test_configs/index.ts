@@ -86,6 +86,17 @@ const MOCK_STAFF: Staff[] = [
   },
 ];
 
+const CHART_CONFIG = {
+  container: "chart-container",
+  chart: "chart",
+};
+
+const ANALYTICS_CARD_CONFIG = {
+  container: "analytics-card-container",
+  title: "analytics-card-title",
+  data: "analytics-card-data",
+};
+
 export {
   ISSUE_CARD_CONFIG,
   ISSUE_BUTTON_CONFIG,
@@ -94,4 +105,6 @@ export {
   FILTERS_CONFIG,
   MOCK_STATUSES,
   MOCK_STAFF,
+  CHART_CONFIG,
+  ANALYTICS_CARD_CONFIG,
 };
