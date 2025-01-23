@@ -1,6 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import IssueButton, { IssueButtonProps } from "../IssueButton";
-import { updateIssueStatus } from "../serveractions";
 import { ISSUE_BUTTON_CONFIG } from "@/test_configs";
 
 const mockSetIssueStatus = jest.fn();

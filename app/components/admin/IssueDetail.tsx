@@ -20,7 +20,7 @@ const {
   goBack,
 } = ISSUE_DETAIL_CONFIG;
 
-export interface IssueDetailProps {
+interface IssueDetailProps {
   issue: IssueResponseType;
   statuses: IssueStatusType[];
 }
