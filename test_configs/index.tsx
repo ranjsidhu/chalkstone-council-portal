@@ -115,6 +115,22 @@ const LOGIN_MODAL_CONFIG = {
   error: "login-modal-error",
 };
 
+const IMAGE_UPLOAD_CONFIG = {
+  container: "image-upload-container",
+  removeButton: "image-upload-remove-button",
+  fileInput: "image-upload-file-input",
+  uploadPhotoText: "image-upload-upload-photo-text",
+  previewName: "image-upload-preview-name",
+  previewImage: "image-upload-preview-image",
+};
+
+const ISSUE_SELECT_CONFIG = {
+  container: "issue-select-container",
+  select: "issue-select-select",
+  label: "issue-select-label",
+  option: "issue-select-option",
+};
+
 export {
   ISSUE_CARD_CONFIG,
   ISSUE_BUTTON_CONFIG,
@@ -127,4 +143,6 @@ export {
   ANALYTICS_CARD_CONFIG,
   HEADER_CONFIG,
   LOGIN_MODAL_CONFIG,
+  IMAGE_UPLOAD_CONFIG,
+  ISSUE_SELECT_CONFIG,
 };

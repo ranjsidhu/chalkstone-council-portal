@@ -4,7 +4,6 @@ import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { icon } from "leaflet";
 
-// Fix the marker icon issue
 const defaultIcon = icon({
   iconUrl:
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
