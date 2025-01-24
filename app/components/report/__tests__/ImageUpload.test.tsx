@@ -20,10 +20,6 @@ beforeEach(() => {
 afterEach(() => {
   jest.resetAllMocks();
 });
-jest.mock("next/image", () => ({
-  __esModule: true,
-  default: (props: any) => <img {...props} />,
-}));
 
 jest.mock("lucide-react", () => ({
   Filter: () => <div data-testid="filter">MockedFilter</div>,

@@ -4,7 +4,7 @@ import { getAddress } from "@/app/utils";
 
 jest.mock("next/dynamic", () => ({
   __esModule: true,
-  default: function dynamicMock(fn: any) {
+  default: function dynamicMock() {
     const Component = jest.fn(({ onLocationSelect }) => {
       return (
         <div data-testid="map" onClick={() => onLocationSelect(51.5, -0.1)} />
