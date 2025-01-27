@@ -4,7 +4,16 @@ import { IssueStatusType } from "@/app/types";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 
-export async function updateIssueStatus(status: IssueStatusType, id: number) {
+/**
+ * Updates the status of an issue
+ * @param status - The new status of the issue
+ * @param id - The ID of the issue
+ * @returns {Promise<void>}
+ */
+export async function updateIssueStatus(
+  status: IssueStatusType,
+  id: number
+): Promise<void> {
   try {
     const response = await fetch(BASE_URL + "/api/issues", {
       method: "PUT",

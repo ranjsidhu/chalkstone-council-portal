@@ -3,6 +3,12 @@ import { createClient } from "@/app/utils";
 
 const { NEXT_PUBLIC_IMAGE_BUCKET } = process.env;
 
+/**
+ * Get an image by filename
+ * @param req NextRequest
+ * @param params Promise<{ filename: string }>
+ * @returns NextResponse with message and image data
+ */
 export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ filename: string }> }

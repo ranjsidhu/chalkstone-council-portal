@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/app/utils";
 
+/**
+ * Get the total number of issues
+ * @returns JSON response with message and count
+ */
 export async function GET() {
   try {
     const supabase = await createClient();

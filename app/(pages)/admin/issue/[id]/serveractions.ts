@@ -4,6 +4,11 @@ import { createClient } from "@/app/utils";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 
+/**
+ * Fetch an issue by id
+ * @param id string
+ * @returns JSON response with message and issue data
+ */
 export async function fetchIssueDetails(id: string) {
   try {
     const response = await fetch(`${BASE_URL}/api/issues/${id}`);
@@ -14,6 +19,10 @@ export async function fetchIssueDetails(id: string) {
   }
 }
 
+/**
+ * Fetch all issue statuses
+ * @returns Array of issue statuses
+ */
 export async function fetchIssueStatuses() {
   try {
     const supabase = await createClient();

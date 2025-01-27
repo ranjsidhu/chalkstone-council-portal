@@ -14,8 +14,11 @@ export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
+  /**
+   * Checks if the user is authenticated when the component mounts.
+   * If they are not, it opens the login modal.
+   */
   useEffect(() => {
-    // Check if user is authenticated on component mount
     const authStatus = localStorage.getItem(AUTH_STORAGE_KEY);
     setIsLoggedIn(authStatus === "true");
     if (

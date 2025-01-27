@@ -11,6 +11,10 @@ type ImageUploadProps = {
 export default function ImageUpload({ image, setImage }: ImageUploadProps) {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
+  /**
+   * Sets the preview URL when an image is uploaded.
+   * If the image is null, it will set the preview URL to null.
+   */
   useEffect(() => {
     if (!image) {
       setPreviewUrl(null);

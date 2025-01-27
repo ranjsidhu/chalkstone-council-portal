@@ -22,6 +22,11 @@ export default function MapSelect({
   setLoading,
   setAddress,
 }: MapSelectProps) {
+  /**
+   * Get address from lat and lng
+   * @param lat <number> latitude
+   * @param lng <number> longitude
+   */
   const handleLocationSelect = async (lat: number, lng: number) => {
     setPosition([lat, lng]);
     setLoading(true);

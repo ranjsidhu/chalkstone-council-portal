@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/app/utils";
 
+/**
+ * Get all issues
+ * @returns JSON response with message and issues
+ */
 export async function GET() {
   try {
     const supabase = await createClient();
@@ -19,6 +23,11 @@ export async function GET() {
   }
 }
 
+/**
+ * Create a new issue
+ * @param req NextRequest
+ * @returns JSON response with message and issue data
+ */
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -45,6 +54,12 @@ export async function POST(req: NextRequest) {
   }
 }
 
+/**
+ * Update an issue
+ * @param req NextRequest
+ * @param params Promise<{ id: string }>
+ * @returns JSON response with message and issue data
+ */
 export async function PUT(req: NextRequest) {
   try {
     const body = await req.json();

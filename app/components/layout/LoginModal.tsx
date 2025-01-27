@@ -32,6 +32,10 @@ export default function LoginModal({
     setPassword("");
   };
 
+  /**
+   * Handles the submission of the login form.
+   * @param e - The form submission event
+   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");

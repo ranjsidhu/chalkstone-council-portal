@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/app/utils";
 
+/**
+ * Get an issue by id
+ * @param req NextRequest
+ * @param params Promise<{ id: string }>
+ * @returns JSON response with message and issue data
+ */
 export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }

@@ -32,6 +32,9 @@ export default function AnalyticsDashboard() {
     issuesTrend: [],
   });
 
+  /**
+   * Fetch analytics data
+   */
   useEffect(() => {
     const fetchAnalytics = async () => {
       try {

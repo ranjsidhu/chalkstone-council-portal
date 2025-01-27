@@ -3,6 +3,7 @@
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { icon } from "leaflet";
+import { JSX } from "react";
 
 const defaultIcon = icon({
   iconUrl:
@@ -21,7 +22,17 @@ type MapProps = {
   onLocationSelect: (lat: number, lng: number) => void;
 };
 
-function LocationMarker({ position, onLocationSelect }: MapProps) {
+/**
+ * Renders a map with a marker at the specified position.
+ * When the map is clicked, the marker will move to the clicked position.
+ * @param position - The position of the marker on the map.
+ * @param onLocationSelect - A function that is called when the marker is moved.
+ * @returns {JSX.Element | null} A map with a marker or null if position is null.
+ */
+function LocationMarker({
+  position,
+  onLocationSelect,
+}: MapProps): JSX.Element | null {
   useMapEvents({
     click(e) {
       const { lat, lng } = e.latlng;

@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/app/utils";
 
+/**
+ * Get issues with filters
+ * @param req NextRequest
+ * @returns JSON response with message and issues
+ */
 export async function GET(req: NextRequest) {
   try {
     const searchParams = req.nextUrl.searchParams;

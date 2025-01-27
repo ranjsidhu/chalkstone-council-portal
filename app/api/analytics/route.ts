@@ -94,7 +94,7 @@ function processIssuesTrend(issues: any[]) {
   const days: { [key: string]: number } = {};
   const now = new Date();
 
-  // Initialize last 7 days
+  // Initialise last 7 days
   for (let i = 6; i >= 0; i--) {
     const date = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
     const dateStr = date.toISOString().split("T")[0];
@@ -113,37 +113,4 @@ function processIssuesTrend(issues: any[]) {
     date,
     count,
   }));
-}
-
-function getDayNames() {
-  return [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-}
-
-// eslint-disable-next-line no-unused-vars
-function getDayNumber(dayName: string) {
-  return getDayNames().indexOf(dayName);
-}
-
-// eslint-disable-next-line no-unused-vars
-function isThisWeek(date: Date) {
-  const now = new Date();
-  const weekStart = new Date(now.setDate(now.getDate() - now.getDay()));
-  const weekEnd = new Date(now.setDate(now.getDate() + 6));
-  return date >= weekStart && date <= weekEnd;
-}
-
-// eslint-disable-next-line no-unused-vars
-function isLastWeek(date: Date) {
-  const now = new Date();
-  const lastWeekStart = new Date(now.setDate(now.getDate() - now.getDay() - 7));
-  const lastWeekEnd = new Date(now.setDate(now.getDate() + 6));
-  return date >= lastWeekStart && date <= lastWeekEnd;
 }

@@ -13,6 +13,13 @@ const Pagination = ({
   totalPages,
   onPageChange,
 }: PaginationProps) => {
+  /**
+   * Renders the page numbers in the pagination.
+   * If the total number of pages is less than or equal to 4,
+   * it will render all pages without ellipsis.
+   * If the total number of pages is greater than 4,
+   * it will render the first page, an ellipsis, and the last page.
+   */
   const renderPageNumbers = () => {
     const pages = [];
 

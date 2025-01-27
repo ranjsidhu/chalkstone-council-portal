@@ -3,6 +3,11 @@ import { createClient } from "@/app/utils";
 
 const { NEXT_PUBLIC_IMAGE_BUCKET } = process.env;
 
+/**
+ * Upload an image
+ * @param req NextRequest
+ * @returns JSON response with message
+ */
 export async function POST(req: NextRequest) {
   try {
     const supabase = await createClient();

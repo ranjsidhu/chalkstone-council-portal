@@ -2,6 +2,18 @@ import toast from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
 import { type IssueSelectOptionType } from "../types";
 
+/**
+ * Handles the submission of an issue form
+ * @param e - The form submission event
+ * @param values - Object containing form values including:
+ *   - position: Array of coordinates [lat, lng]
+ *   - issue: Selected issue type
+ *   - description: Issue description
+ *   - image: Optional image file
+ *   - address: Location address
+ * @param resetForm - Function to reset the form after submission
+ * @returns Promise<void>
+ */
 const handleSubmit = async (
   e: React.FormEvent,
   values: {
@@ -35,7 +47,6 @@ const handleSubmit = async (
       }),
     });
 
-    // toast.success("Thank you for your enquiry. We will be in touch shortly.");
     toast.success("Issue created successfully. Uploading image...");
 
     if (values.image && image_type) {
@@ -52,8 +63,6 @@ const handleSubmit = async (
         throw new Error("Failed to upload image");
       }
     }
-
-    toast.success("Image uploaded successfully!");
   } catch (error: any) {
     toast.error("Error submitting issue:", error);
   } finally {

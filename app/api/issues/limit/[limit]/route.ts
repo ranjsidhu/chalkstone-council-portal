@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/app/utils";
 
+/**
+ * Get issues with a limit
+ * @param req NextRequest
+ * @param params Promise<{ limit: string }>
+ * @returns JSON response with message and issues
+ */
 export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ limit: string }> }

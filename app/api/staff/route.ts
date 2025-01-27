@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/app/utils";
 
+/**
+ * Get all staff
+ * @returns JSON response with message and staff
+ */
 export async function GET() {
   try {
     const supabase = await createClient();

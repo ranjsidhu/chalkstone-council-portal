@@ -2,6 +2,12 @@
 
 import toast from "react-hot-toast";
 
+/**
+ * Get address from lat and lng
+ * @param lat <number> latitude
+ * @param lng <number> longitude
+ * @returns address as a string
+ */
 const getAddress = async (lat: number, lng: number) => {
   try {
     const response = await fetch(
