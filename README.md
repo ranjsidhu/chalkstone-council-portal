@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Chalkstone Council Portal
+
+A Next.js application for managing and reporting community issues to the local council. This portal allows citizens to report issues in their community and council staff to manage and track these reports.
+
+## Features
+
+### Public Features
+
+- Report community issues with location mapping
+- Upload images of issues
+- Provide detailed descriptions
+- View issue status updates
+
+### Admin Features
+
+- View and manage reported issues
+- Update issue statuses (Open, In Progress, Resolved, Closed)
+- View analytics dashboard
+- Assign staff to issues
+- Track resolution times
+
+### API Routes
+
+- `/api/issues` - CRUD operations for issues
+- `/api/issues/[id]` - Individual issue operations
+- `/api/upload` - Image upload handling
+- `/api/staff` - Staff management
+- `/api/analytics` - Analytics data
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+1. Install [Node.js](https://nodejs.org/) (version 18.0.0 or higher)
+2. Git for version control
+
+### Development Setup
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/username/chalkstone-council-portal.git
+cd chalkstone-council-portal
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Environment Variables:
+
+   - Contact the development team to obtain the necessary `.env` file
+   - Required variables include:
+     - `NEXT_PUBLIC_DB_URL`
+     - `NEXT_PUBLIC_DB_API_ANON_KEY`
+     - `NEXT_PUBLIC_IMAGE_BUCKET`
+     - `NEXT_PUBLIC_SITE_URL`
+
+4. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Testing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Run the test suite:
 
-## Learn More
+```bash
+npm test
+```
 
-To learn more about Next.js, take a look at the following resources:
+Watch mode for development:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run test:watch
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Technology Stack
 
-## Deploy on Vercel
+- Next.js 15.1
+- React 19
+- TypeScript
+- Tailwind CSS
+- Jest for testing
+- Supabase for backend
+- Leaflet for maps
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The project follows Next.js 15+ app directory structure
+
+## Contributing
+
+1. Create a feature branch from `main`
+2. Make your changes
+3. Write/update tests
+4. Submit a pull request
+
+For detailed contribution guidelines, please contact the development team.
