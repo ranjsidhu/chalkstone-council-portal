@@ -35,3 +35,41 @@ export async function updateIssueStatus(
     console.error("Error updating issue status: " + error.message);
   }
 }
+
+export async function fetchStaff() {
+  try {
+    const response = await fetch(BASE_URL + "/api/staff");
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    const parsed = await response.json();
+
+    return parsed.response;
+  } catch (error: any) {
+    console.error("Error fetching staff: " + error.message);
+  }
+}
+
+export async function assignStaffToIssue(
+  staff_id: number,
+  issue_id: number
+): Promise<void> {
+  try {
+    const response = await fetch(BASE_URL + "/api/staff_issues", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        staff_id,
+        issue_id,
+      }),
+    });
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+  } catch (error: any) {
+    console.error("Error assigning staff to issue: " + error.message);
+  }
+}

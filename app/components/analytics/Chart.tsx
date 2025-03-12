@@ -1,14 +1,6 @@
 import { ResponsiveContainer } from "recharts";
 import { CHART_CONFIG } from "@/test_configs";
-
-type ChartProps = {
-  label: string;
-  children: React.ReactElement<
-    unknown,
-    string | React.JSXElementConstructor<any>
-  >;
-  outerClassName?: string;
-};
+import { ChartProps } from "@/app/types";
 
 export default function Chart({ label, children, outerClassName }: ChartProps) {
   const defaultClassName = "bg-white p-6 rounded-lg shadow";

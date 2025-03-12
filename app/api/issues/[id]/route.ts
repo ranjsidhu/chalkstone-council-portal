@@ -19,7 +19,9 @@ export async function GET(
     }
     const { data: issueData, error: issueError } = await supabase
       .from("issues")
-      .select("*, issue_statuses(name), issue_types(name)")
+      .select(
+        "*, issue_statuses(name), issue_types(name), staff_issues(staff(id, name))"
+      )
       .eq("id", id);
     if (issueError) throw new Error(issueError.message);
 

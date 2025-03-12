@@ -33,6 +33,12 @@ export type IssueResponseType = {
   issue_types: {
     name: string;
   };
+  staff_issues: {
+    staff: {
+      id: number;
+      name: string;
+    };
+  }[];
 };
 
 export type AnalyticsStats = {
@@ -50,4 +56,13 @@ export type Staff = {
   name: string;
   created_at: string;
   updated_at: string;
+};
+
+export type ChartProps = {
+  label: string;
+  children: React.ReactElement<
+    unknown,
+    string | React.JSXElementConstructor<any>
+  >;
+  outerClassName?: string;
 };

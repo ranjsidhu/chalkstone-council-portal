@@ -11,6 +11,7 @@ export type IssueButtonProps = {
   buttonText: string;
   icon?: React.ReactNode;
   setIssueStatus: React.Dispatch<SetStateAction<IssueStatus>>;
+  assign?: boolean;
 };
 
 export default function IssueButton({
@@ -20,6 +21,7 @@ export default function IssueButton({
   buttonText,
   icon,
   setIssueStatus,
+  assign,
 }: IssueButtonProps) {
   if (!status) return null;
   const typedStatus = mapStatusToType(status.name);
@@ -37,7 +39,7 @@ export default function IssueButton({
   return (
     <button
       data-testid={container}
-      disabled={issueStatus === status.name}
+      disabled={issueStatus === status.name || !assign}
       className={`flex-1  text-white py-2 px-4 rounded-md  flex items-center justify-center gap-2 hover:cursor-pointer ${
         statusColours[typedStatus]
       } ${

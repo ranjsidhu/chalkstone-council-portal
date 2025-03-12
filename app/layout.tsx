@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 import Header from "./components/layout/Header";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
@@ -17,9 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-        {children}
-        <Toaster position="top-right" />
+        <AntdRegistry>
+          <Header />
+          {children}
+          <Toaster position="top-right" />
+        </AntdRegistry>
       </body>
     </html>
   );
