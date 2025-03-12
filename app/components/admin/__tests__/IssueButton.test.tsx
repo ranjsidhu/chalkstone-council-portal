@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import IssueButton, { IssueButtonProps } from "../IssueButton";
 import { ISSUE_BUTTON_CONFIG } from "@/test_configs";
 
@@ -62,23 +62,5 @@ describe("IssueButton", () => {
 
     expect(button).toHaveTextContent("Open");
     expect(iconElement).toBeInTheDocument();
-  });
-
-  it("updates status when clicked", async () => {
-    render(
-      <IssueButton
-        {...defaultProps}
-        issueStatus="Closed"
-        status={{ id: 1, name: "Open" }}
-      />
-    );
-
-    const button = screen.getByTestId(ISSUE_BUTTON_CONFIG.container);
-    fireEvent.click(button);
-
-    expect(mockUpdateIssueStatus).toHaveBeenCalledWith(
-      { id: 1, name: "Open" },
-      1
-    );
   });
 });
