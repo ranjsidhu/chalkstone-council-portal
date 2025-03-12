@@ -12,6 +12,7 @@ export default function StaffModal({
 }: {
   visible: boolean;
   issueId: number;
+  //   eslint-disable-next-line no-unused-vars
   setIsModalOpen: (open: boolean) => void;
 }) {
   const { Option } = Select;
