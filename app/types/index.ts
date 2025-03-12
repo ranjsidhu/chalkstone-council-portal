@@ -38,7 +38,7 @@ export type IssueResponseType = {
       id: number;
       name: string;
     };
-  }[];
+  };
 };
 
 export type AnalyticsStats = {

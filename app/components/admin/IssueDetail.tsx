@@ -34,6 +34,7 @@ interface IssueDetailProps {
 // };
 
 export default function IssueDetail({ issue, statuses }: IssueDetailProps) {
+  console.log("🚀 ~ IssueDetail ~ issue:", issue);
   const router = useRouter();
   const [issueStatus, setIssueStatus] = useState(issue.issue_statuses.name);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -83,8 +84,8 @@ export default function IssueDetail({ issue, statuses }: IssueDetailProps) {
             </span>
           </div>
           <div className="flex items-start gap-2 text-gray-600">
-            {issue.staff_issues[0]?.staff?.name
-              ? `Assigned to ${issue.staff_issues[0]?.staff?.name}`
+            {issue?.staff_issues?.staff?.name
+              ? `Assigned to ${issue.staff_issues?.staff?.name}`
               : "Unassigned"}
           </div>
 
