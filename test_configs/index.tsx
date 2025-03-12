@@ -31,7 +31,7 @@ const MOCK_ISSUE: IssueResponseType = {
   status_id: 1,
   issue_types: { name: "Pothole" },
   issue_statuses: { name: "Open" },
-  staff_issues: [],
+  staff_issues: {staff: {id: -1, name: "Test Staff Member"}},
   created_at: "2021-10-25T00:00:00.000Z",
   updated_at: "2021-10-25T00:00:00.000Z",
 };
