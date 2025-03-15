@@ -52,15 +52,15 @@ export async function GET() {
     }));
 
     // Calculate average resolution time
-    const resolvedIssuesData = allIssues?.filter((issue) => issue.updated_at);
-    const averageResolutionTime = resolvedIssuesData?.length
-      ? resolvedIssuesData.reduce((acc, issue) => {
-          const resolutionTime =
-            new Date(issue.updated_at).getTime() -
-            new Date(issue.created_at).getTime();
-          return acc + resolutionTime;
-        }, 0) / resolvedIssuesData.length
-      : 0;
+    // const resolvedIssuesData = allIssues?.filter((issue) => issue.updated_at);
+    // const averageResolutionTime = resolvedIssuesData?.length
+    //   ? resolvedIssuesData.reduce((acc, issue) => {
+    //       const resolutionTime =
+    //         new Date(issue.updated_at).getTime() -
+    //         new Date(issue.created_at).getTime();
+    //       return acc + resolutionTime;
+    //     }, 0) / resolvedIssuesData.length
+    //   : 0;
 
     // Process issues trend (last 7 days)
     const sevenDaysAgo = new Date();
