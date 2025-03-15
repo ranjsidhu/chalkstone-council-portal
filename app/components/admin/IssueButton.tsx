@@ -39,7 +39,6 @@ export default function IssueButton({
   return (
     <button
       data-testid={container}
-      disabled={issueStatus === status.name || !assign}
       className={`flex-1  text-white py-2 px-4 rounded-md  flex items-center justify-center gap-2 hover:cursor-pointer ${
         statusColours[typedStatus]
       } ${
